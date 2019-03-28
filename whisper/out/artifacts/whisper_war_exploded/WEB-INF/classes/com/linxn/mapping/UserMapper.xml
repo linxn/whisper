@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.linxn.dao.UserMapper" >
+  <!--  开启该namespace下的二级缓存  -->
+  <cache></cache>
+
+  <resultMap id="BaseResultMap" type="com.linxn.domain.User" >
+    <id column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="u_username" property="uUsername" jdbcType="VARCHAR" />
+    <result column="u_userpwd" property="uUserpwd" jdbcType="VARCHAR" />
+    <result column="u_re_date" property="uReDate" jdbcType="TIMESTAMP" />
+    <result column="u_online" property="uOnline" jdbcType="TINYINT" />
+    <result column="u_head_photo" property="uHeadPhoto" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    u_id, u_username, u_userpwd, u_re_date, u_online, u_head_photo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where u_id = #{uId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where u_id = #{uId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.linxn.domain.User" >
+    insert into user (u_id, u_username, u_userpwd,
+      u_re_date, u_online, u_head_photo
+      )
+    values (#{uId,jdbcType=INTEGER}, #{uUsername,jdbcType=VARCHAR}, #{uUserpwd,jdbcType=VARCHAR}, 
+      #{uReDate,jdbcType=TIMESTAMP}, #{uOnline,jdbcType=TINYINT}, #{uHeadPhoto,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.linxn.domain.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="uUsername != null" >
+        u_username,
+      </if>
+      <if test="uUserpwd != null" >
+        u_userpwd,
+      </if>
+      <if test="uReDate != null" >
+        u_re_date,
+      </if>
+      <if test="uOnline != null" >
+        u_online,
+      </if>
+      <if test="uHeadPhoto != null" >
+        u_head_photo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="uUsername != null" >
+        #{uUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="uUserpwd != null" >
+        #{uUserpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="uReDate != null" >
+        #{uReDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uOnline != null" >
+        #{uOnline,jdbcType=TINYINT},
+      </if>
+      <if test="uHeadPhoto != null" >
+        #{uHeadPhoto,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.linxn.domain.User" >
+    update user
+    <set >
+      <if test="uUsername != null" >
+        u_username = #{uUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="uUserpwd != null" >
+        u_userpwd = #{uUserpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="uReDate != null" >
+        u_re_date = #{uReDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uOnline != null" >
+        u_online = #{uOnline,jdbcType=TINYINT},
+      </if>
+      <if test="uHeadPhoto != null" >
+        u_head_photo = #{uHeadPhoto,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where u_id = #{uId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.linxn.domain.User" >
+    update user
+    set u_username = #{uUsername,jdbcType=VARCHAR},
+      u_userpwd = #{uUserpwd,jdbcType=VARCHAR},
+      u_re_date = #{uReDate,jdbcType=TIMESTAMP},
+      u_online = #{uOnline,jdbcType=TINYINT},
+      u_head_photo = #{uHeadPhoto,jdbcType=VARCHAR}
+    where u_id = #{uId,jdbcType=INTEGER}
+  </update>
+
+  <!-- 自己添加的sql -->
+  <select id="selectByNameAndPwd" parameterType="com.linxn.domain.User" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where u_username = #{uUsername,jdbcType=VARCHAR}
+    and u_userpwd = #{uUserpwd,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 该sql语句效率太差 项目重构时改进 -->
+  <select id="selectOnLineUser" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select u_id, u_username, u_head_photo 
+    from user
+    where u_online = 1
+    and u_id not in (#{limit,jdbcType=INTEGER})
+    order by rand()
+    limit 5
+  </select>
+
+  <select id="selectFriendList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select u_id, u_username, u_head_photo
+    from friend
+    left join user
+    on user.u_id = friend.f_to_id
+    where f_from_id = #{uid,jdbcType=INTEGER}
+    and friend.f_type = 1
+    union
+    select u_id, u_username, u_head_photo
+    from friend
+    left join user
+    on user.u_id = friend.f_from_id
+    where f_to_id = #{uid,jdbcType=INTEGER}
+    and friend.f_type = 1
+  </select>
+
+  <select id="selectDesireFriendList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select u_id, u_username, u_head_photo
+    from friend
+    left join user
+    on user.u_id = friend.f_to_id
+    where f_from_id = #{uid,jdbcType=INTEGER}
+    and friend.f_type = 2
+    union
+    select u_id, u_username, u_head_photo
+    from friend
+    left join user
+    on user.u_id = friend.f_from_id
+    where f_to_id = #{uid,jdbcType=INTEGER}
+    and friend.f_type = 2
+  </select>
+</mapper>

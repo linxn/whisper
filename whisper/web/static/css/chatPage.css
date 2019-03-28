@@ -1,0 +1,173 @@
+.l-con{
+    background-color: rgba(46, 50, 57, 0.95);
+    height: 650px;
+    padding: 20px;
+}
+
+.r-con{
+    background-color: rgba(236, 236, 237, 0.7);
+    height: 650px;
+    padding: 20px;
+}
+
+.f-name {
+    font-size: 17px;
+    color: white;
+    top: 0;
+}
+
+.my-name{
+    font-size: 25px;
+    color: white;
+}
+
+.my-head-photo{
+    margin-right: 10px;
+}
+
+.refrash{
+    float: right;
+}
+
+.refrash-s{
+    cursor: pointer;
+}
+
+.refrash-color{
+    color: white;
+    margin-top: 4px;
+}
+
+.dispart-line{
+    background-color: white;
+}
+
+.friend-card:hover{
+    cursor: pointer;
+    background-color: #586168 !important;
+}
+
+.friend-card{
+    height: 50px;
+}
+
+.left-chat-panel{
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.right-chat-panel{
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.talk-show-field{
+    height: 400px;
+    overflow: auto;
+}
+
+.text_field{
+    width:100%;
+    height:95px;
+    border:0;
+    resize: none;
+    background-color: rgba(236, 236, 237, 0.2);
+}
+
+.right-btn{
+    float: right;
+}
+
+.talk-to-name{
+    text-align: center;
+    font-size: 20px;
+}
+
+.none-box2{
+    height: 130px;
+    overflow: auto;
+}
+
+.accept-btn-group{
+    float: right;
+}
+
+.add-friend-bar{
+    display: none;
+}
+
+.send-time{
+    text-align: center;
+    color: #2e3238;
+}
+
+.mobile-page .admin-img, .mobile-page .user-img{
+    height:40px;
+}
+i.triangle-admin,i.triangle-user{
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 10px;
+    display: inline-block;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+.mobile-page i.triangle-admin{
+    left: 4px;
+    border-right: 12px solid #fff;
+}
+.mobile-page i.triangle-user{
+    right: 4px;
+    border-left: 12px solid #9EEA6A;
+}
+.mobile-page .admin-group, .mobile-page .user-group{
+    padding: 6px;
+    display: flex;
+    display: -webkit-flex;
+}
+.mobile-page .admin-group{
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+}
+.mobile-page .user-group{
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+}
+.mobile-page .admin-reply, .mobile-page .user-reply{
+    display: inline-block;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: #fff;
+    margin:0 15px 12px;
+}
+.mobile-page .admin-reply{
+    box-shadow: 0px 0px 2px #ddd;
+}
+.mobile-page .user-reply{
+    text-align: left;
+    background-color: #9EEA6A;
+    box-shadow: 0px 0px 2px #bbb;
+}
+.mobile-page .user-msg, .mobile-page .admin-msg{
+    width: 75%;
+    position: relative;
+}
+.mobile-page .user-msg{
+    text-align: right;
+}
+
+.none-box3-f-1{
+    display: none;
+}
+.none-box3-f-2{
+    display: none;
+}
+.none-box3-f-3{
+    display: none;
+}
+.none-box3-f-4{
+    display: none;
+}
+.none-box3-f-5{
+    display: none;
+}

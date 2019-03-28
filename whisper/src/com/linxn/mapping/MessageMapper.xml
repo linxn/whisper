@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.linxn.dao.MessageMapper" >
+
+  <resultMap id="BaseResultMap" type="com.linxn.domain.Message" >
+    <id column="m_id" property="mId" jdbcType="INTEGER" />
+    <result column="m_type" property="mType" jdbcType="INTEGER" />
+    <result column="m_from_id" property="mFromId" jdbcType="INTEGER" />
+    <result column="m_to_id" property="mToId" jdbcType="INTEGER" />
+    <result column="m_content" property="mContent" jdbcType="VARCHAR" />
+    <result column="m_time" property="mTime" jdbcType="TIMESTAMP" />
+    <result column="m_if_read" property="mIfRead" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    m_id, m_type, m_from_id, m_to_id, m_content, m_time, m_if_read
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from message
+    where m_id = #{mId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from message
+    where m_id = #{mId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.linxn.domain.Message" >
+    insert into message (m_id, m_type, m_from_id, 
+      m_to_id, m_content, m_time, 
+      m_if_read)
+    values (#{mId,jdbcType=INTEGER}, #{mType,jdbcType=INTEGER}, #{mFromId,jdbcType=INTEGER}, 
+      #{mToId,jdbcType=INTEGER}, #{mContent,jdbcType=VARCHAR}, #{mTime,jdbcType=TIMESTAMP}, 
+      #{mIfRead,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.linxn.domain.Message" >
+    insert into message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mId != null" >
+        m_id,
+      </if>
+      <if test="mType != null" >
+        m_type,
+      </if>
+      <if test="mFromId != null" >
+        m_from_id,
+      </if>
+      <if test="mToId != null" >
+        m_to_id,
+      </if>
+      <if test="mContent != null" >
+        m_content,
+      </if>
+      <if test="mTime != null" >
+        m_time,
+      </if>
+      <if test="mIfRead != null" >
+        m_if_read,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mId != null" >
+        #{mId,jdbcType=INTEGER},
+      </if>
+      <if test="mType != null" >
+        #{mType,jdbcType=INTEGER},
+      </if>
+      <if test="mFromId != null" >
+        #{mFromId,jdbcType=INTEGER},
+      </if>
+      <if test="mToId != null" >
+        #{mToId,jdbcType=INTEGER},
+      </if>
+      <if test="mContent != null" >
+        #{mContent,jdbcType=VARCHAR},
+      </if>
+      <if test="mTime != null" >
+        #{mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mIfRead != null" >
+        #{mIfRead,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.linxn.domain.Message" >
+    update message
+    <set >
+      <if test="mType != null" >
+        m_type = #{mType,jdbcType=INTEGER},
+      </if>
+      <if test="mFromId != null" >
+        m_from_id = #{mFromId,jdbcType=INTEGER},
+      </if>
+      <if test="mToId != null" >
+        m_to_id = #{mToId,jdbcType=INTEGER},
+      </if>
+      <if test="mContent != null" >
+        m_content = #{mContent,jdbcType=VARCHAR},
+      </if>
+      <if test="mTime != null" >
+        m_time = #{mTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mIfRead != null" >
+        m_if_read = #{mIfRead,jdbcType=TINYINT},
+      </if>
+    </set>
+    where m_id = #{mId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.linxn.domain.Message" >
+    update message
+    set m_type = #{mType,jdbcType=INTEGER},
+      m_from_id = #{mFromId,jdbcType=INTEGER},
+      m_to_id = #{mToId,jdbcType=INTEGER},
+      m_content = #{mContent,jdbcType=VARCHAR},
+      m_time = #{mTime,jdbcType=TIMESTAMP},
+      m_if_read = #{mIfRead,jdbcType=TINYINT}
+    where m_id = #{mId,jdbcType=INTEGER}
+  </update>
+
+  <!--  自己添加  -->
+  <select id="selectNotReadMessage" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from message
+    where m_to_id = #{uId,jdbcType=INTEGER}
+    and m_type = 20
+    and m_if_read = 0;
+  </select>
+
+
+  <select id="selectNotReadDesireMessage" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from message
+    where m_to_id = #{uId,jdbcType=INTEGER}
+    and m_type = 33
+    and m_if_read = 0;
+  </select>
+</mapper>

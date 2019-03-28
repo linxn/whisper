@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.linxn.dao.TreeholeMapper" >
+  <resultMap id="BaseResultMap" type="com.linxn.domain.Treehole" >
+    <id column="t_id" property="tId" jdbcType="INTEGER" />
+    <result column="t_publisher_id" property="tPublisherId" jdbcType="INTEGER" />
+    <result column="t_content" property="tContent" jdbcType="VARCHAR" />
+    <result column="t_likes_count" property="tLikesCount" jdbcType="INTEGER" />
+    <result column="t_publish_time" property="tPublishTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    t_id, t_publisher_id, t_content, t_likes_count, t_publish_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from treehole
+    where t_id = #{tId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from treehole
+    where t_id = #{tId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.linxn.domain.Treehole" >
+    insert into treehole (t_id, t_publisher_id, t_content, 
+      t_likes_count, t_publish_time)
+    values (#{tId,jdbcType=INTEGER}, #{tPublisherId,jdbcType=INTEGER}, #{tContent,jdbcType=VARCHAR}, 
+      #{tLikesCount,jdbcType=INTEGER}, #{tPublishTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.linxn.domain.Treehole" >
+    insert into treehole
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tId != null" >
+        t_id,
+      </if>
+      <if test="tPublisherId != null" >
+        t_publisher_id,
+      </if>
+      <if test="tContent != null" >
+        t_content,
+      </if>
+      <if test="tLikesCount != null" >
+        t_likes_count,
+      </if>
+      <if test="tPublishTime != null" >
+        t_publish_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tId != null" >
+        #{tId,jdbcType=INTEGER},
+      </if>
+      <if test="tPublisherId != null" >
+        #{tPublisherId,jdbcType=INTEGER},
+      </if>
+      <if test="tContent != null" >
+        #{tContent,jdbcType=VARCHAR},
+      </if>
+      <if test="tLikesCount != null" >
+        #{tLikesCount,jdbcType=INTEGER},
+      </if>
+      <if test="tPublishTime != null" >
+        #{tPublishTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.linxn.domain.Treehole" >
+    update treehole
+    <set >
+      <if test="tPublisherId != null" >
+        t_publisher_id = #{tPublisherId,jdbcType=INTEGER},
+      </if>
+      <if test="tContent != null" >
+        t_content = #{tContent,jdbcType=VARCHAR},
+      </if>
+      <if test="tLikesCount != null" >
+        t_likes_count = #{tLikesCount,jdbcType=INTEGER},
+      </if>
+      <if test="tPublishTime != null" >
+        t_publish_time = #{tPublishTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where t_id = #{tId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.linxn.domain.Treehole" >
+    update treehole
+    set t_publisher_id = #{tPublisherId,jdbcType=INTEGER},
+      t_content = #{tContent,jdbcType=VARCHAR},
+      t_likes_count = #{tLikesCount,jdbcType=INTEGER},
+      t_publish_time = #{tPublishTime,jdbcType=TIMESTAMP}
+    where t_id = #{tId,jdbcType=INTEGER}
+  </update>
+
+  <!--  自己添加  -->
+
+  <select id="selectLimitRandomTH" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from(
+    select
+    <include refid="Base_Column_List" />
+    from treehole
+    order by rand()
+    limit #{limit,jdbcType=INTEGER}) t
+    order by t_likes_count desc;
+  </select>
+</mapper>

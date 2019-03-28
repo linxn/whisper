@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.linxn.dao.SystemMessageLogMapper" >
+  <resultMap id="BaseResultMap" type="com.linxn.domain.Message" >
+    <id column="sm_id" property="mId" jdbcType="INTEGER" />
+    <result column="sm_type" property="mType" jdbcType="INTEGER" />
+    <result column="sm_from_id" property="mFromId" jdbcType="INTEGER" />
+    <result column="sm_to_id" property="mToId" jdbcType="INTEGER" />
+    <result column="sm_content" property="mContent" jdbcType="VARCHAR" />
+    <result column="sm_time" property="mTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sm_id, sm_type, sm_from_id, sm_to_id, sm_content, sm_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from systemmessagelog
+    where sm_id = #{mId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from systemmessagelog
+    where sm_id = #{mId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.linxn.domain.Message" >
+    insert into systemmessagelog (sm_id, sm_type, sm_from_id,
+      sm_to_id, sm_content, sm_time
+      )
+    values (#{mId,jdbcType=INTEGER}, #{mType,jdbcType=INTEGER}, #{mFromId,jdbcType=INTEGER},
+      #{mToId,jdbcType=INTEGER}, #{mContent,jdbcType=VARCHAR}, #{mTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.linxn.domain.Message" >
+    insert into systemmessagelog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mId != null" >
+        sm_id,
+      </if>
+      <if test="mType != null" >
+        sm_type,
+      </if>
+      <if test="mFromId != null" >
+        sm_from_id,
+      </if>
+      <if test="mToId != null" >
+        sm_to_id,
+      </if>
+      <if test="mContent != null" >
+        sm_content,
+      </if>
+      <if test="mTime != null" >
+        sm_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mId != null" >
+        #{mId,jdbcType=INTEGER},
+      </if>
+      <if test="mType != null" >
+        #{mType,jdbcType=INTEGER},
+      </if>
+      <if test="mFromId != null" >
+        #{mFromId,jdbcType=INTEGER},
+      </if>
+      <if test="mToId != null" >
+        #{mToId,jdbcType=INTEGER},
+      </if>
+      <if test="mContent != null" >
+        #{mContent,jdbcType=VARCHAR},
+      </if>
+      <if test="mTime != null" >
+        #{mTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.linxn.domain.Message" >
+    update systemmessagelog
+    <set >
+      <if test="mType != null" >
+        sm_type = #{mType,jdbcType=INTEGER},
+      </if>
+      <if test="mFromId != null" >
+        sm_from_id = #{mFromId,jdbcType=INTEGER},
+      </if>
+      <if test="mToId != null" >
+        sm_to_id = #{mToId,jdbcType=INTEGER},
+      </if>
+      <if test="mContent != null" >
+        sm_content = #{mContent,jdbcType=VARCHAR},
+      </if>
+      <if test="mTime != null" >
+        sm_time = #{mTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where sm_id = #{mId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.linxn.domain.Message" >
+    update systemmessagelog
+    set sm_type = #{mType,jdbcType=INTEGER},
+      sm_from_id = #{mFromId,jdbcType=INTEGER},
+      sm_to_id = #{mToId,jdbcType=INTEGER},
+      sm_content = #{mContent,jdbcType=VARCHAR},
+      sm_time = #{mTime,jdbcType=TIMESTAMP}
+    where sm_id = #{mId,jdbcType=INTEGER}
+  </update>
+</mapper>

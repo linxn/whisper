@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chat</title>
+
+    <link href="/chat/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/chat/static/css/homePage.css" rel="stylesheet" >
+    <link href="/chat/static/css/chatPage.css" rel="stylesheet" >
+    <link rel="stylesheet" href="/chat/static/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/chat/static/css/jquery.emoji.css">
+    <link rel="stylesheet" href="/chat/static/css/dragon.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--<script src="/chat/static/js/jquery-3.3.1.min.js"></script>-->
+    <script src="/chat/static/js/jquery.min.js"></script>
+    <script src="/chat/static/js/bootstrap.min.js"></script>
+
+    <script src="/chat/static/js/chat.js"></script>
+    <script src="/chat/static/js/highlight.pack.js"></script>
+    <script src="/chat/static/js/jquery.mousewheel-3.0.6.min.js"></script>
+    <script src="/chat/static/js/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/chat/static/js/jquery.emoji.min.js"></script>
+
+
+
+</head>
+<body background="/chat/static/img/background3.jpg">
+<script src="/chat/static/js/canvas/canvas-nest.min.js" count="200"></script>
+
+<div class="container">
+    <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4 pt-1" class="off-set"/>
+        </div>
+        <div class="col-4  col-offset-4 text-center">
+            <img class="blog-header-logo text-dark" src="/chat/static/img/chat_logo.png" height="90" width="332"/>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            <a class="btn btn-sm btn-outline-secondary" href="/chat/html/login.html">Sign up</a>
+        </div>
+    </header>
+
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+            <a class="p-2 text-muted" href="/chat/html/homePage.html">主页</a>
+            <a class="p-2 text-muted" href="#">匿名聊天</a>
+            <a class="p-2 text-muted" href="#">好友聊天</a>
+            <a class="p-2 text-muted" href="/chat/html/THPage.html">树洞</a>
+            <a class="p-2 text-muted" href="/chat/html/DesirePage.html">许愿池</a>
+            <!--<a class="p-2 text-muted" href="#">Business</a>
+            <a class="p-2 text-muted" href="#">Politics</a>
+            <a class="p-2 text-muted" href="#">Opinion</a>
+            <a class="p-2 text-muted" href="#">Science</a>
+            <a class="p-2 text-muted" href="#">Health</a>
+            <a class="p-2 text-muted" href="#">Style</a>
+            <a class="p-2 text-muted" href="#">Travel</a>-->
+        </nav>
+    </div>
+    <br />
+    <div class="row">
+        <div class="l-con col-4 left-chat-panel">
+            <div class="my-card">
+                <!-- 静态资源被拦截 src="/chat/static/img/head.jpg" -->
+<!--                <img src="/chat/static/img/head.jpg" height="50" />
+                &nbsp;&nbsp;&nbsp;&nbsp;-->
+                <span class="my-name"></span>
+            </div>
+            <hr class="dispart-line"/>
+            <div>
+                <!--<span class="f-name">推荐列表</span>-->
+                <a class="f-name stra-list" href="javascript:void(0)">推荐列表</a>
+                <a class="f-name frie-list" href="javascript:void(0)">好友列表</a>
+                <a><i class="fa fa-refresh fa-lg refrash-color refrash refrash-s" href="javascript:void(0)"></i></a>
+            </div>
+            <hr class="dispart-line"/>
+            <div class="none-box">
+                <!--<div class="friend-card">
+                    <img src="../static/img/head.jpg" height="40" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="friend-num" style="display:none">1</span><span class="f-name">linxn</span>
+                </div>
+                <div class="friend-card">
+                    <img src="../static/img/head.jpg" height="40" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="friend-num" style="display:none">2</span><span class="f-name">John</span>
+                </div>
+                <div class="friend-card">
+                    <img src="../static/img/head.jpg" height="40" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="friend-num" style="display:none">3</span><span class="f-name">Lisa</span>
+                </div>
+                <div class="friend-card">
+                    <img src="../static/img/head.jpg" height="40" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="friend-num" style="display:none">4</span><span class="f-name">Sean</span>
+                </div>
+                <div class="friend-card">
+                    <img src="../static/img/head.jpg" height="40" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="friend-num" style="display:none">5</span><span class="f-name">CoCo</span>
+                </div>-->
+            </div>
+            <!-- 请求连接 -->
+            <div class="request-connect">
+                <hr class="dispart-line"/>
+                <div>
+                    <span class="f-name">邀请聊天</span>
+                </div>
+                <hr class="dispart-line"/>
+                <div class="none-box2">
+                    <!--<div class="friend-card">
+                        <img src="../static/img/head.jpg" height="40" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="friend-num" style="display:none">23</span><span class="f-name">test5</span>
+                        <div class="btn-group accept-btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary accept-btn">接受</button>
+                            <button type="button" class="btn btn-secondary refuse-btn">拒绝</button>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div class="r-con col-8 right-chat-panel">
+            <div class="r-con-head">
+                <span class="talk-to-num" style="display:none">-1</span><p class="talk-to-name">选择聊天人</p>
+            </div>
+            <hr />
+            <div class="talk-show-field mobile-page">
+                <div class="add-friend-bar">
+                    <span>对方请求添加好友</span>
+                    <button class="right-btn disaggree-add-friend">拒绝</button>
+                    <button class="right-btn agree-add-friend">同意</button>
+                    <hr />
+                </div>
+                <div class="none-box3 stranger-none-box"></div>
+                <div class="none-box3 none-box3-f-1"></div>
+                <div class="none-box3 none-box3-f-2"></div>
+                <div class="none-box3 none-box3-f-3"></div>
+                <div class="none-box3 none-box3-f-4"></div>
+                <div class="none-box3 none-box3-f-5"></div>
+                <div class="none-box3 none-box3-f-6"></div>
+
+                <!--<div class="send-time">10:55</div>
+                <div class="user-group">
+                    <div class="user-msg">
+                        <span class="user-reply">赵铁柱，你好呀</span>
+                        <i class="triangle-user"></i>
+                    </div>
+                    <img class="user-img" src="../static/img/head.jpg"/>
+                </div>
+                <div class="admin-group">
+
+                    <img class="admin-img" src="../static/img/head.jpg" />
+                    <div class="admin-msg">
+                        <i class="triangle-admin"></i>
+                        <span class="admin-reply">你也好，二狗子：）</span>
+                    </div>
+                </div>-->
+            </div>
+            <div class="tool-bar">
+                <!--<button id="emoji-btn">&nbsp;&nbsp;</button>-->
+                <a><i class="fa fa-smile-o fa-lg" id="emoji-btn"></i></a>
+                <!--<span>表情</span>-->
+            </div>
+            <div class="text_panel">
+                <textarea class="text_field" id="emoji_text_field"></textarea>
+                <br class="bar-split"/>
+                <button class="right-btn send-btn" disabled="disabled">发送</button>
+                <button class="disconnect-btn right-btn" disabled="disabled">结束聊天</button>
+                <button class="add-friend-btn right-btn" disabled="disabled">添加好友</button>
+                <button class="del-friend-btn right-btn" disabled="disabled">删除好友</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br /><hr />
+<footer class="footer footer-set">
+    <div class="container">
+        <p class="text-muted" style="margin:0 auto;">CopyRight ©2018 linxn</p>
+    </div>
+</footer>
+
+<div id="world"></div>
+<div id="power"></div>
+<script src='http://cdn.bootcss.com/three.js/r70/three.min.js'></script>
+<script src='/chat/static/js/OrbitControls.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
+<script src="/chat/static/js/dragon.js"></script>
+</body>
+</html>

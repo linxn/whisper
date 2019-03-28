@@ -1,0 +1,46 @@
+.TH-left-panel{
+    background-image: url("../img/background5.jpg");
+    height: 600px;
+    margin-right: 20px;
+    opacity: 0.8;
+    border-radius: 3px;
+}
+.TH-right-panel{
+    background-color: rgba(253,254,254,0.8);
+    height: 400px;
+    margin-left: 20px;
+    border-radius: 3px;
+}
+
+
+.TH-container{
+    background-color: rgba(252,252,252,0.8);
+    border:2px dotted black;
+    padding: 10px;
+}
+
+.do-likes{
+    float: right;
+    cursor: pointer;
+    margin-left: 7px;
+}
+
+.do-likes:hover{
+    color: gold;   !important
+}
+
+.do-likes-realize{
+    color: gray;
+    cursor: default;
+}
+
+.text-field{
+    width:100%;
+    height:220px;
+    resize: none;
+    background-color: rgba(253,254,254,0.5);
+}
+
+.reflash-btn{
+    float: right;
+}

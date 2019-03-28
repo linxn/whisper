@@ -1,0 +1,18 @@
+body{
+    overflow-x: hidden;
+}
+#world{
+        position:absolute;
+        top: 40%;
+        right: -23%;
+        height: 300px !important;
+        overflow: hidden;
+}
+/*2.028481012658228*/
+#world canvas{
+    width: 1000px !important;
+    height: 493px !important;
+}
+#power{
+    display: none;
+}

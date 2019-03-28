@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.linxn.dao.DesireMapper" >
+
+  <resultMap id="BaseResultMap" type="com.linxn.domain.Desire" >
+    <id column="d_id" property="dId" jdbcType="INTEGER" />
+    <result column="d_publisher_id" property="dPublisherId" jdbcType="INTEGER" />
+    <result column="d_content" property="dContent" jdbcType="VARCHAR" />
+    <result column="d_likes_count" property="dLikesCount" jdbcType="INTEGER" />
+    <result column="d_time" property="dTime" jdbcType="TIMESTAMP" />
+    <result column="d_realize" property="dRealize" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    d_id, d_publisher_id, d_content, d_likes_count, d_time, d_realize
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from desire
+    where d_id = #{dId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from desire
+    where d_id = #{dId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.linxn.domain.Desire" >
+    insert into desire (d_id, d_publisher_id, d_content, 
+      d_likes_count, d_time, d_realize
+      )
+    values (#{dId,jdbcType=INTEGER}, #{dPublisherId,jdbcType=INTEGER}, #{dContent,jdbcType=VARCHAR}, 
+      #{dLikesCount,jdbcType=INTEGER}, #{dTime,jdbcType=TIMESTAMP}, #{dRealize,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.linxn.domain.Desire" >
+    insert into desire
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dId != null" >
+        d_id,
+      </if>
+      <if test="dPublisherId != null" >
+        d_publisher_id,
+      </if>
+      <if test="dContent != null" >
+        d_content,
+      </if>
+      <if test="dLikesCount != null" >
+        d_likes_count,
+      </if>
+      <if test="dTime != null" >
+        d_time,
+      </if>
+      <if test="dRealize != null" >
+        d_realize,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dId != null" >
+        #{dId,jdbcType=INTEGER},
+      </if>
+      <if test="dPublisherId != null" >
+        #{dPublisherId,jdbcType=INTEGER},
+      </if>
+      <if test="dContent != null" >
+        #{dContent,jdbcType=VARCHAR},
+      </if>
+      <if test="dLikesCount != null" >
+        #{dLikesCount,jdbcType=INTEGER},
+      </if>
+      <if test="dTime != null" >
+        #{dTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dRealize != null" >
+        #{dRealize,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.linxn.domain.Desire" >
+    update desire
+    <set >
+      <if test="dPublisherId != null" >
+        d_publisher_id = #{dPublisherId,jdbcType=INTEGER},
+      </if>
+      <if test="dContent != null" >
+        d_content = #{dContent,jdbcType=VARCHAR},
+      </if>
+      <if test="dLikesCount != null" >
+        d_likes_count = #{dLikesCount,jdbcType=INTEGER},
+      </if>
+      <if test="dTime != null" >
+        d_time = #{dTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dRealize != null" >
+        d_realize = #{dRealize,jdbcType=TINYINT},
+      </if>
+    </set>
+    where d_id = #{dId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.linxn.domain.Desire" >
+    update desire
+    set d_publisher_id = #{dPublisherId,jdbcType=INTEGER},
+      d_content = #{dContent,jdbcType=VARCHAR},
+      d_likes_count = #{dLikesCount,jdbcType=INTEGER},
+      d_time = #{dTime,jdbcType=TIMESTAMP},
+      d_realize = #{dRealize,jdbcType=TINYINT}
+    where d_id = #{dId,jdbcType=INTEGER}
+  </update>
+
+
+  <!--  自己添加  -->
+
+  <select id="selectLimitRandomDesire" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from(
+    select
+    <include refid="Base_Column_List" />
+    from desire
+    order by rand()
+    limit #{limit,jdbcType=INTEGER}) t
+    order by d_likes_count desc;
+  </select>
+</mapper>

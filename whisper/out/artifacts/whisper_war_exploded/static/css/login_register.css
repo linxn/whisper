@@ -1,0 +1,56 @@
+.logo-field{
+    margin-top: 80px;
+}
+
+.signin-field {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.dispart-line{
+    height: 100px;
+    width: 1px;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+#inputUserName{
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#inputPassword_l{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#checkPassword{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#inputPassword_r{
+    margin-bottom: -1px;
+    border-radius: 0;
+}
+
+.register-label {
+    float: right;
+
+}

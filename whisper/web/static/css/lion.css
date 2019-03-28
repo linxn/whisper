@@ -1,0 +1,22 @@
+body{
+    overflow-x: hidden;
+}
+
+#world{
+    position:absolute;
+    bottom: -7%;
+    right: -15%;
+    height: 300px;
+    overflow: hidden;
+
+    /*    overflow-x: visible;
+        overflow-y: visible;*/
+    /*    width: 40%;
+        height: 40%;*/
+}
+/*2.028481012658228*/
+
+#world canvas{
+    width: 1000px !important;
+    height: 493px !important;
+}

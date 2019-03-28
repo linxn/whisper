@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+    <link href="/chat/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/chat/static/css/homePage.css" rel="stylesheet">
+    <!--<link href="../static/css/homePage.css" rel="stylesheet">-->
+
+    <script src="/chat/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/chat/static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/chat/static/css/dragon.css">
+</head>
+
+
+<body background="/chat/static/img/background3.jpg">
+<script src="/chat/static/js/canvas/canvas-nest.min.js" count="200"></script>
+<div class="container">
+    <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4 pt-1" class="off-set"/></div>
+            <div class="col-4  col-offset-4 text-center">
+                <img class="blog-header-logo text-dark" src="/chat/static/img/chat_logo.png" height="90" width="332"/>
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center">
+                <a class="btn btn-sm btn-outline-secondary" href="/chat/html/login.html">Sign up</a>
+            </div>
+    </header>
+
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+            <a class="p-2 text-muted" href="#">主页</a>
+            <a class="p-2 text-muted" href="/chat/html/chatPage.html?pageType=stranger">匿名聊天</a>
+            <a class="p-2 text-muted" href="/chat/html/chatPage.html?pageType=friend">好友聊天</a>
+            <a class="p-2 text-muted" href="/chat/html/THPage.html">树洞</a>
+            <a class="p-2 text-muted" href="/chat/html/DesirePage.html">许愿池</a>
+            <!--<a class="p-2 text-muted" href="#">Business</a>
+            <a class="p-2 text-muted" href="#">Politics</a>
+            <a class="p-2 text-muted" href="#">Opinion</a>
+            <a class="p-2 text-muted" href="#">Science</a>
+            <a class="p-2 text-muted" href="#">Health</a>
+            <a class="p-2 text-muted" href="#">Style</a>
+            <a class="p-2 text-muted" href="#">Travel</a>-->
+        </nav>
+    </div>
+
+    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark-title">
+        <div class="col-md-6 px-0">
+            <h1 class="display-4 font-italic">Whisper</h1>
+            <p class="lead my-3">倾听或是倾诉 开心或是伤心 在这里 都可以畅你所言</p>
+            <p class="lead my-3">Whisper，专注于匿名聊天的社交工具</p>
+            <!--<p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>-->
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <!--<div class="col-md-6">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250 chat-div">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-primary">聊天</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="/chat/html/chatPage.html?pageType=stranger">进入聊天</a>
+                    </h3>
+                    &lt;!&ndash;<div class="mb-1 text-muted">Nov 12</div>
+                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#">Continue reading</a>&ndash;&gt;
+                </div>
+                &lt;!&ndash;<img class="card-img-right flex-auto d-none d-md-block" data-src="/chat/static/img/pic.svg" alt="Card image cap">&ndash;&gt;
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250 friend-div">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-success">好友</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="/chat/html/chatPage.html?pageType=friend">进入好友列表</a>
+                    </h3>
+                    &lt;!&ndash;<div class="mb-1 text-muted">Nov 11</div>
+                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#">Continue reading</a>&ndash;&gt;
+                </div>
+                &lt;!&ndash;<img class="card-img-right flex-auto d-none d-md-block" data-src="/chat/static/img/pic.svg" alt="Card image cap">&ndash;&gt;
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250 treehole-div">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-primary">树洞</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="/chat/html/THPage.html">进入树洞</a>
+                    </h3>
+                    &lt;!&ndash;<div class="mb-1 text-muted">Nov 12</div>
+                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#">Continue reading</a>&ndash;&gt;
+                </div>
+                &lt;!&ndash;<img class="card-img-right flex-auto d-none d-md-block" data-src="/chat/static/img/pic.svg" alt="Card image cap">&ndash;&gt;
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250 desire-div">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-success">许愿池</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="/chat/html/DesirePage.html">进入许愿池</a>
+                    </h3>
+                    &lt;!&ndash;<div class="mb-1 text-muted">Nov 11</div>
+                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#">Continue reading</a>&ndash;&gt;
+                </div>
+                &lt;!&ndash;<img class="card-img-right flex-auto d-none d-md-block" data-src="/chat/static/img/pic.svg" alt="Card image cap">&ndash;&gt;
+            </div>
+        </div>-->
+
+
+        <div class="col-md-6">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250 div-back-img">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-primary">聊天</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="/chat/html/chatPage.html?pageType=stranger">进入匿名聊天</a>
+                    </h3>
+                    <br />
+                    <span class="card-text mb-auto">嘿！你有什么想对我说的嘛~~ 还是，你想听什么？</span>
+                    <!--<a href="#">Continue reading</a>-->
+                </div>
+                <img class="card-img-right flex-auto d-none d-md-block" src="../static/img/chat-background2.jpg" alt="Card image cap">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250 div-back-img">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-success">好友</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="/chat/html/chatPage.html?pageType=friend">进入好友聊天</a>
+                    </h3>
+                    <br />
+                    <p class="card-text mb-auto">别把老友忘啦</p>
+                    <!--<a href="#">Continue reading</a>-->
+                </div>
+                <img class="card-img-right flex-auto d-none d-md-block" src="../static/img/friend-background2.jpg" alt="Card image cap">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250 div-back-img">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-primary">树洞</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="/chat/html/THPage.html">进入树洞</a>
+                    </h3>
+                    <br />
+                    <p class="card-text mb-auto">树洞是什么，可以吃吗？？</p>
+                    <!--<a href="#">Continue reading</a>-->
+                </div>
+                <img class="card-img-right flex-auto d-none d-md-block" src="../static/img/treehole-background2.jpg" alt="Card image cap">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250 div-back-img">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-success">许愿池</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="/chat/html/DesirePage.html">进入许愿池</a>
+                    </h3>
+                    <br />
+                    <p class="card-text mb-auto">麻麻说，把愿望种在土地里，明年春天愿望就会实现哦(*^▽^*)</p>
+                    <!--<a href="#">Continue reading</a>-->
+                </div>
+                <img class="card-img-right flex-auto d-none d-md-block" src="../static/img/desire-background2.jpg" alt="Card image cap">
+            </div>
+        </div>
+    </div>
+</div>
+
+<br /><hr />
+<footer class="footer footer-set">
+    <div class="container">
+        <p class="text-muted" style="margin:0 auto;">CopyRight ©2018 linxn</p>
+    </div>
+</footer>
+
+<div id="world"></div>
+<div id="power"></div>
+<script src='http://cdn.bootcss.com/three.js/r70/three.min.js'></script>
+<script src='/chat/static/js/OrbitControls.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
+<script src="/chat/static/js/dragon.js"></script>
+</body>
+</html>
